@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional Portfolio Design System */
+
+@layer base {
+  :root {
+    /* Dark Blue Professional Theme */
+    --background: 220 25% 8%;
+    --foreground: 0 0% 95%;
+    
+    /* Enhanced Deep Blue Theme */
+    --primary: 214 100% 55%;
+    --primary-glow: 214 100% 70%;
+    --primary-dark: 214 100% 30%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Dark Card System */
+    --card: 220 25% 12%;
+    --card-foreground: 0 0% 95%;
+    --card-shadow: 214 80% 15%;
+    
+    /* Enhanced Accent Colors */
+    --accent-cyan: 186 100% 55%;
+    --accent-purple: 270 100% 65%;
+    --accent: 214 100% 55%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Dark Neutrals */
+    --muted: 220 25% 16%;
+    --muted-foreground: 220 9% 70%;
+    --border: 220 25% 18%;
+    --input: 220 25% 18%;
+    --ring: 214 100% 55%;
+    
+    /* Secondary Colors */
+    --secondary: 220 25% 20%;
+    --secondary-foreground: 0 0% 95%;
+    
+    /* Destructive Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Popover */
+    --popover: 220 25% 12%;
+    --popover-foreground: 0 0% 95%;
+    
+    /* Design System Tokens */
+    --radius: 0.75rem;
+    --portfolio-gradient: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent-cyan)));
+    --hero-gradient: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary)));
+    --card-gradient: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
+    
+    /* Enhanced 3D Animation Variables */
+    --shadow-3d: 0 20px 40px -10px hsl(var(--primary) / 0.2);
+    --shadow-3d-hover: 0 30px 60px -15px hsl(var(--primary) / 0.3);
+    --transform-3d: perspective(1000px) rotateX(5deg) rotateY(-10deg);
+    --transform-3d-hover: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 0 0% 95%;
+    --primary: 214 100% 60%;
+    --primary-glow: 214 100% 75%;
+    --primary-dark: 214 100% 35%;
+    --card: 220 25% 10%;
+    --card-foreground: 0 0% 95%;
+    --muted: 220 25% 15%;
+    --muted-foreground: 220 9% 65%;
+    --border: 220 25% 15%;
+    --input: 220 25% 15%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-['DM_Sans'];
+    scroll-behavior: smooth;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* 3D Card Animation System */
+  .card-3d {
+    @apply transform-gpu transition-all duration-500 ease-out;
+    transform: var(--transform-3d);
+    box-shadow: var(--shadow-3d);
+  }
+
+  .card-3d:hover {
+    transform: var(--transform-3d-hover) scale(1.02);
+    box-shadow: var(--shadow-3d-hover);
+  }
+
+  /* Gradient Text Effect */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--portfolio-gradient);
+  }
+
+  /* Hero Section Styling */
+  .hero-gradient {
+    background: var(--hero-gradient);
+  }
+
+  /* Auto Carousel Animation - Faster and Smoother */
+  .auto-scroll {
+    animation: autoScroll 10s linear infinite;
+  }
+
+  .auto-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  /* Floating Animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Skill Card 3D Effect */
+  .skill-card {
+    @apply transform-gpu transition-all duration-300;
+    transform: perspective(1000px) rotateY(0deg);
+  }
+
+  .skill-card:hover {
+    transform: perspective(1000px) rotateY(15deg) scale(1.05);
+  }
+
+  /* Project Card Animation */
+  .project-card {
+    @apply transform-gpu transition-all duration-500;
+    transform: perspective(1000px) rotateX(10deg);
+  }
+
+  .project-card:hover {
+    transform: perspective(1000px) rotateX(0deg) translateY(-10px);
+  }
+
+  /* Navigation Link Effect */
+  .nav-link {
+    @apply relative overflow-hidden;
+  }
+
+  .nav-link::after {
+    @apply absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-300;
+    content: '';
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Button Glow Effect */
+  .btn-glow {
+    @apply relative overflow-hidden;
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.5);
+  }
+}
+
+@keyframes autoScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.6s ease-out;
+}
+/* Hide Lovable watermark/footer */
+a[href*="lovable"],
+footer a[href*="lovable"],
+footer p:has(a[href*="lovable"]) {
+  display: none !important;
+}
